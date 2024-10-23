@@ -1,0 +1,13 @@
+config:
+  target: "ws://localhost:3000/?roomId=test-room"
+  phases:
+    - duration: 30  # 테스트 지속 시간 (초)
+      arrivalRate: 10000  # 초당 20명의 사용자가 접속
+scenarios:
+  - engine: "ws"
+    flow:
+      - send: 
+          text: "Hello from user {{ $loopIteration }}"
+      # - think: 2  # 2초 대기
+      - send:
+          text: "Another message from user {{ $loopIteration }}"
